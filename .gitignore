@@ -1,0 +1,14 @@
+*.DS_Store
+*.sw?
+*.py?
+*.tar.gz
+*.zip
+.grunt
+.sass-cache
+local
+build
+dist
+cdn
+bower_components
+node_modules
+_SpecRunner.html
