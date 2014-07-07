@@ -53,8 +53,16 @@ module.exports = function(grunt) {
         cdnDir: 'cdn',
 
         serve: {
-            forever: {
+            local: {
                 options: {
+                    base: 'local/',
+                    keepalive: true,
+                    port: 8125
+                }
+            },
+            dist: {
+                options: {
+                    base: 'dist/',
                     keepalive: true,
                     port: 8125
                 }
@@ -74,10 +82,12 @@ module.exports = function(grunt) {
             copy: {
                 tasks: ['copy:local'],
                 files: [
+                    '<%= srcDir %>/index.html',
                     '<%= srcDir %>/js/**/**/**/*',
                     '<%= srcDir %>/css/**/**/**/*',
                     '<%= srcDir %>/fonts/**/**/**/*',
-                    '<%= srcDir %>/img/**/**/**/*'
+                    '<%= srcDir %>/img/**/**/**/*',
+                    '<%= srcDir %>/templates/**/**/**/*',
                 ]
             },
             tests: {
@@ -127,6 +137,11 @@ module.exports = function(grunt) {
                 files: [
                     {
                         expand: true,
+                        cwd: '<%= srcDir %>',
+                        src: ['index.html'],
+                        dest: '<%= localDir %>'
+                    }, {
+                        expand: true,
                         cwd: '<%= srcDir %>/js',
                         src: ['**/*'],
                         dest: '<%= localDir %>/js'
@@ -145,6 +160,11 @@ module.exports = function(grunt) {
                         cwd: '<%= srcDir %>/img',
                         src: ['**/*'],
                         dest: '<%= localDir %>/img'
+                    }, {
+                        expand: true,
+                        cwd: '<%= srcDir %>/templates',
+                        src: ['**/*'],
+                        dest: '<%= localDir %>/js/templates'
                     }, {
                         expand: true,
                         src: ['bower.json', 'package.json'],
@@ -173,6 +193,11 @@ module.exports = function(grunt) {
                 files: [
                     {
                         expand: true,
+                        cwd: '<%= srcDir %>',
+                        src: ['index.html'],
+                        dest: '<%= distDir %>'
+                    }, {
+                        expand: true,
                         cwd: '<%= srcDir %>/css',
                         src: ['**/*'],
                         dest: '<%= distDir %>/css'
@@ -198,21 +223,11 @@ module.exports = function(grunt) {
                 files: [
                     {
                         expand: true,
-                        cwd: '<%= srcDir %>/img',
-                        src: [],
-                        dest: '<%= cdnDir %>/img'
+                        cwd: '<%= srcDir %>',
+                        src: ['index.html'],
+                        dest: '<%= cdnDir %>'
                     }
                 ]
-            }
-        },
-
-        symlink: {
-            options: {
-                type: 'dir'
-            },
-            templates: {
-                relativeSrc: '../../<%= srcDir %>/templates',
-                dest: '<%= localDir %>/js/templates'
             }
         },
 
@@ -366,7 +381,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-requirejs');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-symlink');
     grunt.loadNpmTasks('grunt-amdcheck');
 
     grunt.registerMultiTask('serve', 'Run a Node server for testing', function() {
@@ -411,8 +425,13 @@ module.exports = function(grunt) {
         };
 
         var server = http.createServer(function(request, response) {
-            var uri = url.parse(request.url).pathname,
-                filename = path.join(options.base, uri);
+            var pathname = url.parse(request.url).pathname, filename;
+
+            if (path.extname(pathname) === '') {
+                filename = path.join(options.base, 'index.html');
+            } else {
+                filename = path.join(options.base, pathname);
+            }
 
             fs.exists(filename, function(exists) {
                 if (exists) {
@@ -474,7 +493,6 @@ module.exports = function(grunt) {
     grunt.registerTask('local', 'Creates a build for local development and testing', [
         'sass:local',
         'copy:local',
-        'symlink',
         'jasmine:local:build'
     ]);
 
@@ -505,7 +523,6 @@ module.exports = function(grunt) {
 
     grunt.registerTask('test', 'Runs the headless test suite', [
         'copy:local',
-        'symlink',
         'serve:jasmine',
         'jasmine:local'
     ]);
