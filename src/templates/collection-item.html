@@ -1,0 +1,15 @@
+<div class='item-heading'>
+    <i class='fa fa-archive'></i> <a class='item-title' href='/collections/<%= data.uuid %>/'><%= data.label %></a>
+</div>
+
+<div class='item-content'>
+    <% if (data.description) { %>
+        <p><%= data.description %></p>
+    <% } %>
+</div>
+
+<div class='item-footer'>
+    <ul class=list-unstyled>
+        <li><strong title='# of resources in this collection'><i class='fa fa-fw fa-cubes'></i> <%= data.resource_count %></strong> resources</li>
+    </ul>
+</div>

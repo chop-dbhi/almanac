@@ -1,0 +1,17 @@
+<div class='item-heading'>
+    <i class='fa fa-cube'></i> <a href='/components/<%= data.uuid %>/'><strong class='item-title'><%= data.label %></strong></a>
+</div>
+
+<div class='item-content'>
+    <% if (data.description) { %>
+        <p><%= data.description %></p>
+    <% } %>
+</div>
+
+<div class='item-footer'>
+    <ul class=list-unstyled>
+        <li><strong title='component type'><i class='fa fa-fw fa-code'></i> <%= data.type %></strong></li>
+        <li><strong title='# of relationships to other components'><i class='fa fa-fw fa-arrows-h'></i> <%= data.relationship_count %></strong> relationships</li>
+        <li><strong title='# of resources that include this component'><i class='fa fa-fw fa-cubes'></i> <%= data.resource_count %></strong> resources</li>
+    </ul>
+</div>

@@ -360,6 +360,7 @@ module.exports = function(grunt) {
                 reporter: require('jshint-stylish'),
                 ignores: [
                     '<%= srcDir %>/js/backbone.js',
+                    '<%= srcDir %>/js/url-template.js',
                     '<%= srcDir %>/js/bootstrap.js',
                     '<%= srcDir %>/js/jquery.js',
                     '<%= srcDir %>/js/loglevel.js',

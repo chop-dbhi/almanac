@@ -1,0 +1,16 @@
+<table class='table table-condensed table-bordered table-striped properties'>
+    <thead>
+        <tr>
+            <th>Property</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for (var key in data) { %>
+        <tr>
+            <th><%= key %></th>
+            <td><%= data[key] %></td>
+        </tr>
+        <% } %>
+    </tbody>
+</table>

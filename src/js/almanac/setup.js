@@ -41,11 +41,13 @@ define([
 
     // Support cross origin requests with credentials (i.e. cookies)
     // See http://www.html5rocks.com/en/tutorials/cors/
-    $.ajaxPrefilter(function(settings) {
+    /*
+    $.ajaxPrefilter(function() {
         settings.xhrFields = {
             withCredentials: true
         };
     });
+    */
 
     // Setup debugging facilities
     if (almanac.config.get('debug')) {
@@ -55,6 +57,17 @@ define([
             loglevel.info.apply(loglevel.info, [].slice.call(arguments, 0));
         });
     }
+
+    window.onerror = function(message, file, line, column, error) {
+        if (almanac.config.get('debug') && error !== undefined) {
+            almanac.notify({
+                header: 'Error',
+                level: 'danger',
+                message: error.stack,
+                timeout: 0
+            });
+        }
+    };
 
     // Relies on the jquery-ajax-queue plugin to supply this method.
     // This ensures data is not silently lost

@@ -36,6 +36,7 @@ define([
         dismiss: function() {
             // Clear the timer if set
             clearTimeout(this._dismissTimer);
+            this.$el.hide();
         },
 
         hold: function() {
@@ -83,7 +84,7 @@ define([
     var Notifications = Marionette.CollectionView.extend({
         className: 'notifications',
 
-        itemView: Notification,
+        childView: Notification,
 
         constructor: function(options) {
             options = options || {};

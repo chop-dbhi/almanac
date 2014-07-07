@@ -1,0 +1,25 @@
+<div class=page-info>
+    <h3><i class='fa fa-cubes'></i> <%= data.label %></h3>
+
+    <p class=lead><%= data.description %></p>
+
+    <div class=row>
+        <div class=col-md-6>
+            <h4>Component Types</h4>
+
+            <div data-region=types></div>
+        </div>
+
+        <div class=col-md-6>
+            <h4>Stats</h4>
+
+            <ul class=list-unstyled>
+                <li><strong title='# of components included in this resource'><i class='fa fa-fw fa-cube'></i> <%= data.component_count %></strong> components</li>
+                <li><strong title='# of relationships defined in this resource'><i class='fa fa-fw fa-arrows-h'></i> <%= data.relationship_count %></strong> relationships</li>
+                <li><strong title='# of collections containing this resource'><i class='fa fa-fw fa-archive'></i> <%= data.collection_count %></strong> collections</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div data-region=components></div>

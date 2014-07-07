@@ -16,6 +16,8 @@ define([
 
         // Attach commonly used utilities
         utils: utils,
+
+        urls: {}
     };
 
     // Give the almanac events

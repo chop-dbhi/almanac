@@ -1,1 +1,144 @@
 @import "bourbon/bourbon";
+
+body {
+    padding-top: 80px;
+    background-color: #eee;
+}
+
+.spinner {
+    text-align: center;
+}
+
+#main {
+    margin: 0 20px;
+}
+
+#almanac-notifications {
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    z-index: 1200;
+    font-size: 12px;
+    white-space: pre;
+}
+
+.navbar-toolbar {
+    box-shadow: 1px 1px 1px #ccc;
+    border-radius: 0;
+    background-color: #fff;
+    border: none;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.navbar-toolbar .navbar-text {
+    color: #333;
+    margin: 0;
+}
+
+.navbar-toolbar .navbar-header .navbar-text {
+    font-size: 24px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.jumbotron {
+    background-color: #fff;
+    box-shadow: 1px 1px 1px #ccc;
+    border-radius: 0;
+}
+
+.index .highlight {
+    box-shadow: 1px 1px 1px #ccc;
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+
+    h3 {
+        margin-top: 0;
+    }
+
+    :last-child {
+        margin-bottom: 0;
+    }
+}
+
+
+.card-layout {
+    > .item {
+        box-shadow: 1px 1px 1px #ccc;
+        vertical-align: top;
+        background-color: #fff;
+        max-width: 32.4575%;
+        display: inline-block;
+        margin: 5px;
+
+        > .item-heading {
+            color: #fff;
+            font-size: 16px;
+            padding: 10px 20px;
+            margin-bottom: 10px;
+            background-color: #427fed;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+
+            a {
+                color: #fff;
+            }
+        }
+
+        > .item-content {
+            font-size: 12px;
+            padding: 0 20px;
+        }
+
+        > .item-footer {
+            padding: 0 20px 10px 20px;
+            margin-top: 10px;
+            font-size: 12px;
+
+            ul {
+                margin-bottom: 0;
+            }
+        }
+
+    }
+}
+
+.breadcrumbs {
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    > * {
+        display: inline;
+
+        &:last-child i {
+            display: none;
+        }
+
+
+        i {
+            margin: 0 5px;
+        }
+    }
+}
+
+.page-info, .page-section {
+    background-color: #fff;
+    box-shadow: 1px 1px 1px #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+
+    h2 {
+        margin-top: 5px;
+    }
+
+    :first-child {
+        margin-top: 0;
+    }
+
+    :last-child {
+        margin-bottom: 0;
+    }
+}

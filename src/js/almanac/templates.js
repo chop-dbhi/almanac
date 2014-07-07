@@ -4,7 +4,41 @@ define([
     'underscore',
     'loglevel',
 
-    'tpl!templates/welcome.html'
+    'tpl!templates/index.html',
+    'tpl!templates/error.html',
+    'tpl!templates/empty.html',
+    'tpl!templates/loading.html',
+
+    'tpl!templates/search-input.html',
+    'tpl!templates/component-type-item.html',
+
+    'tpl!templates/notification.html',
+
+    'tpl!templates/revision-item.html',
+
+    'tpl!templates/properties-table.html',
+
+    'tpl!templates/pages/search.html',
+
+    'tpl!templates/pages/collections.html',
+    'tpl!templates/pages/resources.html',
+
+    'tpl!templates/relationship-item.html',
+
+    'tpl!templates/pages/collection.html',
+    'tpl!templates/pages/resource.html',
+    'tpl!templates/pages/component.html',
+
+    'tpl!templates/collection-item.html',
+
+    'tpl!templates/resource-item.html',
+
+    'tpl!templates/component-item.html',
+    'tpl!templates/component-source-item.html',
+
+    'tpl!templates/timeline-list-item.html',
+
+    'tpl!templates/path-item.html'
 ], function(_, loglevel) {
 
     // Registers all built-in templates using the augmented _moduleName from

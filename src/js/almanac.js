@@ -3,21 +3,25 @@
 define([
     'underscore',
     './almanac/core',
+    './almanac/components',
+    './almanac/models',
     './almanac/models',
     './almanac/views',
     './almanac/templates',
     './almanac/setup'
-], function(_, almanac, models, views, templates) {
+], function(_, almanac, components, models, store, views, templates) {
 
     // Attach containers of models and ui (views) components
+    almanac.components = components;
     almanac.models = models;
+    almanac.store = models.store;
     almanac.views = views;
     almanac.templates = templates;
 
     // Update to additional asynchronous checks
     var checkReady = function() {
         return templates.ready();
-    }
+    };
 
     // Initial check
     var ready = checkReady();
